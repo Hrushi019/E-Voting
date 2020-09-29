@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block title %}
+<title>Register_Page</title>
+{% endblock %} {% block content %}
+<div class="jumbotron">
+    {% if registered %}
+    <center>
+        <h1>Thanks for Registering</h1>
+    </center>
+    {% else %}
+    <center>
+        <h1><b>Register here for Voting</b></h1>
+    </center>
+    <form method="POST">
+        {% csrf_token %} {{userform|crispy}} {{conform|crispy}}
+        <input type="submit" value="Register here" class="btn btn-primary">
+    </form>
+    {% endif %}
+</div>
+
+{% endblock %}

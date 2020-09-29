@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block title %}
+<title>Voting_Page</title>
+{% endblock %} {% block content %}
+<div class="jumbotron">
+    {% if vote_status %}
+    <h1>You have already voted</h1>
+    {% else %}
+    <center>
+        <h1>Vote Here for a candidate </h1>
+        <form method="POST">
+            {% csrf_token %} {% if candidate %} Candidate_name=
+            <select name="name" id="name">
+                {% for cand in candidates %}
+                <option value="{cand}">{{cand}}</option>
+                {% endfor %}
+                </select>
+            <input type="submit" value="Vote">
+        </form>
+        {% else %}
+        <h3>Login to Vote</h3>
+        {% endif %} {% endif %}
+    </center>
+</div>
+{% endblock %}
